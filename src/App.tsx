@@ -1,7 +1,11 @@
+import "./index.css";
+
 const App = () => {
   return (
     <>
-      <p>Include the login form in here</p>
+      <p className="text-3xl font-bold underline text-white">
+        Include the login form in here
+      </p>
     </>
   );
 };
