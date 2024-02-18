@@ -8,7 +8,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100dvh;
-  background-color: rgb(36, 36, 36);
+  background-color: rgb(var(--color-primary));
 }
 
 #root {
@@ -18,10 +18,73 @@ body {
   text-align: center;
 }
 
+@layer base {
+  :root {
+    --color-primary: 67 72 84;
+    --color-secondary: 233 232 226;
+    --color-accent-1: 102 154 218;
+    --color-accent-2: 0 0 0;
+  }
+}
+
+@layer utilities {
+  .h2 {
+    @apply mb-4 text-base font-extrabold md:text-lg lg:text-xl text-secondary;
+  }
+
+  .p {
+    @apply mb-6 text-sm font-normal lg:text-base sm:px-2 xl:px-4 text-gray-300;
+  }
+
+  .button {
+    @apply bg-accent-1 hover:bg-accent-2 py-2 px-4 rounded text-secondary font-bold;
+  }
+
+  .button-disabled {
+    @apply cursor-not-allowed bg-gray-500 py-2 px-4 rounded text-secondary font-bold;
+  }
+
+  .label {
+    @apply block text-accent-2 text-sm font-bold mb-2;
+  }
+
+  .error {
+    @apply text-red-500 italic;
+  }
+
+  .input {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-primary;
+  }
+
+  .modal {
+    @apply fixed top-1/4 right-0 left-0 z-50 m-auto w-full max-w-md max-h-full rounded-lg shadow bg-primary;
+  }
+
+  .backdrop-modal-wrapper {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-accent-2/10 bg-opacity-50;
+  }
+
+  .backdrop-modal {
+    @apply absolute inset-0 bg-accent-2 bg-opacity-50;
+  }
+
+  .table {
+    @apply w-full text-xs text-left text-primary;
+  }
+
+  .table-data-item {
+    @apply flex items-center justify-between text-secondary font-semibold;
+  }
+
+  .table-data-cell {
+    @apply px-6 py-4 hidden sm:table-cell text-primary font-semibold;
+  }
+}
+
 div,
 html,
 p {
-  scrollbar-color: rgb(133 137 139) transparent;
+  scrollbar-color: rgb(var(--color-secondary)) transparent;
   scrollbar-width: thin;
 }
 
@@ -41,11 +104,11 @@ p {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(133 137 139);
+  background: rgb(var(--color-secondary));
 }
 
 ::-webkit-scrollbar-thumb:window-inactive {
-  background: rgb(133 137 139);
+  background: rgb(var(--color-secondary));
 }
 
 ::-webkit-scrollbar-corner {

@@ -9,20 +9,14 @@ const Home = () => {
 
   return (
     <div className="m-auto">
-      <h2 className="mb-4 text-base	font-extrabold leading-none tracking-tight md:text-lg lg:text-xl text-white">
-        Welcome {user.username}!
-      </h2>
-      <button
-        type="button"
-        onClick={logOutUser}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4"
-      >
+      <h2 className="h2">Welcome {user.username}!</h2>
+      <button type="button" onClick={logOutUser} className="button mb-4">
         Log Out
       </button>
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <p className="text-red-500 text-lg font-bold px-2">
+        <p className="error text-lg font-bold px-2">
           Failed to fetch Star Wars data! Please try again!
         </p>
       ) : (

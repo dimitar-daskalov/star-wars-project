@@ -100,18 +100,15 @@ const LoginForm = () => {
   return (
     <div className="m-auto w-full max-w-xs">
       <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-white shadow-md rounded px-6 py-8"
         onSubmit={handleSubmit}
       >
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="username"
-          >
+          <label className="label" htmlFor="username">
             * Username
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="input focus:outline-none focuse:shadow-outline"
             id="username"
             type="text"
             placeholder="Username"
@@ -124,18 +121,15 @@ const LoginForm = () => {
             }}
           />
           {username?.error && username?.isTouched && (
-            <p className="text-red-500 text-xs italic">{username.error}</p>
+            <p className="error text-xs">{username.error}</p>
           )}
         </div>
         <div className="mb-6">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="password"
-          >
+          <label className="label" htmlFor="password">
             * Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="input focus:outline-none focuse:shadow-outline"
             id="password"
             type="password"
             placeholder="********"
@@ -148,15 +142,11 @@ const LoginForm = () => {
             }}
           />
           {password?.error && password?.isTouched && (
-            <p className="text-red-500 text-xs italic">{password.error}</p>
+            <p className="error text-xs">{password.error}</p>
           )}
         </div>
         <button
-          className={`text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
-            isButtonDisabled
-              ? "cursor-not-allowed bg-gray-500 hover:bg-gray-700 "
-              : "bg-blue-500 hover:bg-blue-700"
-          }`}
+          className={`${isButtonDisabled ? "button-disabled" : "button"}`}
           type="submit"
           disabled={isButtonDisabled}
         >
