@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IStarWarsCharacter, IStarWarsResponse } from "../interfaces";
+import { IStarWarsCharacter, IStarWarsResponse } from "../../interfaces";
 import TableModal from "./TableModal";
 
 interface TableDataProps {

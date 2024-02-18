@@ -1,9 +1,9 @@
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../constants";
-import { useUserContext } from "../context/AuthContext";
+import { ROUTES } from "../../constants";
+import { useUserContext } from "../../context/AuthContext";
 import Input from "./Input";
-import { IInput } from "../interfaces";
+import { IInput } from "../../interfaces";
 
 const LoginForm = () => {
   const [loginData, setLoginData] = useState<Record<string, IInput>>({

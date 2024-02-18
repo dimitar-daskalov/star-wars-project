@@ -3,8 +3,8 @@ import {
   VALIDATION_CONDITIONS,
   INITIAL_STATE,
   VALID_STATE,
-} from "../constants";
-import { IInput, Validation } from "../interfaces";
+} from "../../constants";
+import { IInput, Validation } from "../../interfaces";
 
 interface InputProps {
   onChange: (name: string, value: IInput) => void;

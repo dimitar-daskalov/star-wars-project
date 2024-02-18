@@ -62,11 +62,11 @@ body {
   }
 
   .backdrop-modal-wrapper {
-    @apply fixed inset-0 z-50 flex items-center justify-center bg-accent-2/10 bg-opacity-50;
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-accent-2 bg-opacity-50 sm:hidden;
   }
 
   .backdrop-modal {
-    @apply absolute inset-0 bg-accent-2 bg-opacity-50;
+    @apply absolute inset-0 bg-accent-2 bg-opacity-50 sm:hidden;
   }
 
   .table {

@@ -1,4 +1,4 @@
-import DataTable from "../components/DataTable";
+import DataTable from "../components/tables/DataTable";
 import Loader from "../components/Loader";
 import { useUserContext } from "../context/AuthContext";
 import useGetStarWarsData from "../hooks/useGetStarWarsData";
