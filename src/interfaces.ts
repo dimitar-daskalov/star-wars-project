@@ -1,4 +1,4 @@
-export interface StarWarsCharacter {
+export interface IStarWarsCharacter {
   birth_year: string;
   eye_color: string;
   films: string[];
@@ -15,11 +15,21 @@ export interface StarWarsCharacter {
   starships: string[];
   url: string;
   vehicles: string[];
+  [key: string]: string | string[];
 }
 
-export interface StarWarsResponse {
+export interface IStarWarsResponse {
   count: number;
   next: string | null;
   previous: string | null;
-  results: StarWarsCharacter[];
+  results: IStarWarsCharacter[];
+}
+
+export type Validation = "password" | "username";
+
+export interface IInput {
+  value: string;
+  isTouched: boolean;
+  error: string;
+  isValid: boolean;
 }

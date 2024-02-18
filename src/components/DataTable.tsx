@@ -1,20 +1,25 @@
 import { useState } from "react";
-import { StarWarsCharacter, StarWarsResponse } from "../interfaces";
+import { IStarWarsCharacter, IStarWarsResponse } from "../interfaces";
 import TableModal from "./TableModal";
 
 interface TableDataProps {
-  tableData: StarWarsResponse;
+  tableData: IStarWarsResponse;
 }
+
+const propsToShow = [
+  { name: "mass", key: "mass" },
+  { name: "height", key: "height" },
+  { name: "hair color", key: "hair_color" },
+  { name: "skin color", key: "skin_color" },
+];
 
 const DataTable = ({ tableData }: TableDataProps) => {
   const { results } = tableData;
 
-  const infoTableHeadings = ["mass", "height", "hair color", "skin color"];
-
   const [selectedResult, setSelectedResult] =
-    useState<StarWarsCharacter | null>(null);
+    useState<IStarWarsCharacter | null>(null);
 
-  const handleModalOpen = (result: StarWarsCharacter) => {
+  const handleModalOpen = (result: IStarWarsCharacter) => {
     setSelectedResult(result);
   };
 
@@ -33,9 +38,13 @@ const DataTable = ({ tableData }: TableDataProps) => {
             <th scope="col" className="sm:hidden px-6 py-3">
               details
             </th>
-            {infoTableHeadings.map((heading) => (
-              <th scope="col" className="hidden sm:table-cell px-6 py-3">
-                {heading}
+            {propsToShow.map(({ name }) => (
+              <th
+                key={name}
+                scope="col"
+                className="hidden sm:table-cell px-6 py-3 uppercase"
+              >
+                {name}
               </th>
             ))}
           </tr>
@@ -58,10 +67,11 @@ const DataTable = ({ tableData }: TableDataProps) => {
                   Open
                 </button>
               </td>
-              <td className="table-data-cell">{result.mass}</td>
-              <td className="table-data-cell">{result.height}</td>
-              <td className="table-data-cell">{result.hair_color}</td>
-              <td className="table-data-cell">{result.skin_color}</td>
+              {propsToShow.map(({ key }) => (
+                <td key={key} className="table-data-cell">
+                  {result?.[key]}
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>
@@ -73,22 +83,12 @@ const DataTable = ({ tableData }: TableDataProps) => {
           onCloseModal={handleModalClose}
           data={
             <div className="gap-2">
-              <div className="table-data-item">
-                <p>Mass: </p>
-                <p>{selectedResult.mass}</p>
-              </div>
-              <div className="table-data-item">
-                <p>Height: </p>
-                <p>{selectedResult.height}</p>
-              </div>
-              <div className="table-data-item">
-                <p>Hair Color: </p>
-                <p>{selectedResult.hair_color}</p>
-              </div>
-              <div className="table-data-item">
-                <p>Skin Color: </p>
-                <p>{selectedResult.skin_color}</p>
-              </div>
+              {propsToShow.map((prop) => (
+                <div key={prop.key} className="table-data-item">
+                  <p className="capitalize">{prop.name}: </p>
+                  <p>{selectedResult?.[prop.key]}</p>
+                </div>
+              ))}
             </div>
           }
         />

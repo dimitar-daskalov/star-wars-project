@@ -4,13 +4,13 @@ import { useUserContext } from "../context/AuthContext";
 import useGetStarWarsData from "../hooks/useGetStarWarsData";
 
 const Home = () => {
-  const { user, logOutUser } = useUserContext();
+  const { user, logoutUser } = useUserContext();
   const { data, isLoading, error } = useGetStarWarsData();
 
   return (
-    <div className="m-auto">
+    <div className="mx-auto">
       <h2 className="h2">Welcome {user.username}!</h2>
-      <button type="button" onClick={logOutUser} className="button mb-4">
+      <button type="button" onClick={logoutUser} className="button mb-4">
         Log Out
       </button>
       {isLoading ? (

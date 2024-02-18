@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { VITE_STAR_WARS_API_URL } from "../constants";
-import { StarWarsResponse } from "../interfaces";
+import { IStarWarsResponse } from "../interfaces";
 import useCommonToast from "./useCommonToast";
 
 const useGetStarWarsData = () => {
-  const [data, setData] = useState<StarWarsResponse>({} as StarWarsResponse);
+  const [data, setData] = useState<IStarWarsResponse>({} as IStarWarsResponse);
   const [error, setError] = useState<unknown>();
   const [isLoading, setIsLoading] = useState(true);
-  const { errorToast } = useCommonToast();
+  const { showError } = useCommonToast();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,9 +16,8 @@ const useGetStarWarsData = () => {
         const response = await axios.get(VITE_STAR_WARS_API_URL);
         setData(response.data);
       } catch (error) {
-        console.error(error);
         setError(error);
-        errorToast("Retrieving data failed! Please try again!");
+        showError("Retrieving data failed! Please try again!");
       } finally {
         setIsLoading(false);
       }

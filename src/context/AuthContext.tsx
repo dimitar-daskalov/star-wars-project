@@ -18,7 +18,7 @@ export const INITIAL_USER: UserProps = {
 interface AuthContextProps {
   user: UserProps;
   loginUser: (user: UserProps) => void;
-  logOutUser: () => void;
+  logoutUser: () => void;
   isLoading: boolean;
   isAuthenticated: boolean;
 }
@@ -26,7 +26,7 @@ interface AuthContextProps {
 const AuthContext = createContext<AuthContextProps>({
   user: INITIAL_USER,
   loginUser: () => {},
-  logOutUser: () => {},
+  logoutUser: () => {},
   isLoading: true,
   isAuthenticated: false,
 });
@@ -49,7 +49,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(user));
   };
 
-  const logOutUser = () => {
+  const logoutUser = () => {
     setUser(INITIAL_USER);
     localStorage.removeItem("user");
   };
@@ -67,7 +67,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     () => ({
       user,
       loginUser,
-      logOutUser,
+      logoutUser,
       isLoading,
       isAuthenticated,
     }),
